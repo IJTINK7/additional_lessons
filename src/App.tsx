@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
+import {Button} from "./components/Button";
 
 type TodosType = {
 	userId: number
@@ -33,7 +34,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<button onClick={changeData1}>Change data 1</button>
+			<Button name={"Change data 1"} callBack={changeData1}/>
 			<div>{todos.map(el => {
 					return (
 						<div key={el.id}>
