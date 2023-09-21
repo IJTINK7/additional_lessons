@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 
-type TodosType ={
+type TodosType = {
 	userId: number
 	id: number
 	title: string
@@ -15,7 +15,7 @@ function App() {
 	console.log(todos)
 
 	useEffect(() => {
-		fetch('https://jsonplaceholder.typicode.com/todos/7')
+		fetch('https://jsonplaceholder.typicode.com/todos')
 			.then(response => response.json())
 			.then(json => setTodos(json))
 	}, [])
@@ -27,6 +27,16 @@ function App() {
 	return (
 		<div className="App">
 			<button onClick={changeData1}>Change data 1</button>
+			<div>{todos.map(el => {
+					return (
+						<div key={el.id}>
+							<input type="checkbox" checked={el.completed}/>
+							<span> <b>title:</b> {el.title} </span>
+							<span> <b>id:</b> {el.id} </span>
+						</div>
+					)
+				})}
+			</div>
 		</div>
 	);
 }
