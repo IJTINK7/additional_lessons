@@ -20,6 +20,13 @@ function App() {
 			.then(json => setTodos(json))
 	}, [])
 
+	// useEffect(() => {
+	// 	fetch('https://jsonplaceholder.typicode.com/todos/7') // It's just an object !!!
+	// 		.then(response => response.json())
+	// 		.then(json => setTodos([json])) // don't forget about array of objects !!!
+	// }, [])
+
+
 	const changeData1 = () => {
 		setData(!data)
 	}
