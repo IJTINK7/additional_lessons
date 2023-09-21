@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import {Button} from "./components/Button";
 
@@ -10,16 +10,15 @@ type TodosType = {
 }
 
 function App() {
-	const [data, setData] = useState(true);
+	// const [data, setData] = useState(true);
 
 	const [todos, setTodos] = useState<TodosType[]>([]);
 	console.log(todos)
-
-	useEffect(() => {
-		fetch('https://jsonplaceholder.typicode.com/todos')
-			.then(response => response.json())
-			.then(json => setTodos(json))
-	}, [])
+	// useEffect(() => {
+	// 	fetch('https://jsonplaceholder.typicode.com/todos')
+	// 		.then(response => response.json())
+	// 		.then(json => setTodos(json))
+	// }, [])
 
 	// useEffect(() => {
 	// 	fetch('https://jsonplaceholder.typicode.com/todos/7') // It's just an object !!!
@@ -28,13 +27,21 @@ function App() {
 	// }, [])
 
 
-	const changeData1 = () => {
-		setData(!data)
+	// const changeData1 = () => {
+	// 	setData(!data)
+	// }
+
+	const showData = () => {
+		fetch('https://jsonplaceholder.typicode.com/todos')
+		 		.then(response => response.json())
+		 		.then(json => setTodos(json))
 	}
+
 
 	return (
 		<div className="App">
-			<Button name={"Change data 1"} callBack={changeData1}/>
+			{/*<Button name={"Change data 1"} callBack={changeData1}/>*/}
+			<Button name={"Show data"} callBack={showData}/>
 			<div>{todos.map(el => {
 					return (
 						<div key={el.id}>
