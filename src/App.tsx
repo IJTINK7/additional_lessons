@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './App.css';
 import {Button} from "./components/Button";
 import {Input} from "./components/Input";
@@ -11,10 +11,11 @@ type TodosType = {
 }
 
 function App() {
-	// const [data, setData] = useState(true);
-
 	const [todos, setTodos] = useState<TodosType[]>([]);
-	const [inputValue, setInputValue] = useState("")
+	console.log(todos)
+
+	// const [inputValue, setInputValue] = useState("")
+	const inputValue = useRef<HTMLInputElement>(null)
 
 	const fetchFoo = () => {
 		fetch('https://jsonplaceholder.typicode.com/todos')
@@ -43,22 +44,23 @@ function App() {
 		setTodos([])
 	}
 	const postData = () => {
-		const newTodo = {
-			userId: 1,
-			id: todos.length + 1,
-			title: inputValue,
-			completed: false
+		if(inputValue.current) {
+			const newTodo = {
+				userId: 1,
+				id: todos.length + 1,
+				title: inputValue.current.value,
+				completed: false
+			}
+			setTodos([newTodo, ...todos])
+			inputValue.current.value = ""
 		}
-		setTodos([newTodo, ...todos])
-		setInputValue("")
 	}
 
 
 	return (
 		<div className="App">
-			{/*<Button name={"Change data 1"} callBack={changeData1}/>*/}
 			<div>
-				<Input inputValue={inputValue} setInputValue={setInputValue}/>
+				<Input inputValue={inputValue} />
 				<Button name={"Add data"} callBack={postData}/>
 			</div>
 			<Button name={"Show data"} callBack={showData}/>

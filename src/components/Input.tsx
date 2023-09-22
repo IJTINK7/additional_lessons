@@ -1,17 +1,13 @@
-import React, {ChangeEvent} from 'react';
+import React, {RefObject} from 'react';
 
 type PropsType = {
-	inputValue: string
-	setInputValue: (newTitle: string)=> void
+	inputValue: RefObject<HTMLInputElement>
 }
 
-export const Input: React.FC<PropsType> = ({inputValue, setInputValue}) => {
-	const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-		setInputValue(e.currentTarget.value)
-	}
+export const Input: React.FC<PropsType> = ({inputValue}) => {
 	return (
 		<div>
-			<input value={inputValue} type="text" onChange={onChangeHandler}/>
+			<input type="text" ref={inputValue}/>
 		</div>
 	);
 };
