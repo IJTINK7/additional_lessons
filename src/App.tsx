@@ -42,11 +42,11 @@ function App() {
 	const hideData = () => {
 		setTodos([])
 	}
-	const postData = (value: string) => {
+	const postData = () => {
 		const newTodo = {
 			userId: 1,
 			id: todos.length + 1,
-			title: value,
+			title: inputValue,
 			completed: false
 		}
 		setTodos([newTodo, ...todos])
@@ -59,19 +59,19 @@ function App() {
 			{/*<Button name={"Change data 1"} callBack={changeData1}/>*/}
 			<div>
 				<Input inputValue={inputValue} setInputValue={setInputValue}/>
-				<Button name={"Add data"} callBack={()=>postData(inputValue)}/>
+				<Button name={"Add data"} callBack={postData}/>
 			</div>
 			<Button name={"Show data"} callBack={showData}/>
 			<Button name={"Hide data"} callBack={hideData}/>
 			<div>{todos.map(el => {
-					return (
-						<div key={el.id}>
-							<input type="checkbox" checked={el.completed}/>
-							<span> <b>title:</b> {el.title} </span>
-							<span> <b>id:</b> {el.id} </span>
-						</div>
-					)
-				})}
+				return (
+					<div key={el.id}>
+						<input type="checkbox" checked={el.completed}/>
+						<span> <b>title:</b> {el.title} </span>
+						<span> <b>id:</b> {el.id} </span>
+					</div>
+				)
+			})}
 			</div>
 		</div>
 	);
