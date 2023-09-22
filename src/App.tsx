@@ -36,12 +36,16 @@ function App() {
 		 		.then(response => response.json())
 		 		.then(json => setTodos(json))
 	}
+	const hideData = () => {
+		setTodos([])
+	}
 
 
 	return (
 		<div className="App">
 			{/*<Button name={"Change data 1"} callBack={changeData1}/>*/}
 			<Button name={"Show data"} callBack={showData}/>
+			<Button name={"Hide data"} callBack={hideData}/>
 			<div>{todos.map(el => {
 					return (
 						<div key={el.id}>
