@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Button} from "./components/Button";
+import {Input} from "./components/Input";
 
 type TodosType = {
 	userId: number
@@ -13,12 +14,16 @@ function App() {
 	// const [data, setData] = useState(true);
 
 	const [todos, setTodos] = useState<TodosType[]>([]);
-	console.log(todos)
-	// useEffect(() => {
-	// 	fetch('https://jsonplaceholder.typicode.com/todos')
-	// 		.then(response => response.json())
-	// 		.then(json => setTodos(json))
-	// }, [])
+	const [inputValue, setInputValue] = useState("")
+
+	const fetchFoo = () => {
+		fetch('https://jsonplaceholder.typicode.com/todos')
+			.then(response => response.json())
+			.then(json => setTodos(json))
+	}
+	useEffect(() => {
+		fetchFoo()
+	}, [])
 
 	// useEffect(() => {
 	// 	fetch('https://jsonplaceholder.typicode.com/todos/7') // It's just an object !!!
@@ -32,18 +37,30 @@ function App() {
 	// }
 
 	const showData = () => {
-		fetch('https://jsonplaceholder.typicode.com/todos')
-		 		.then(response => response.json())
-		 		.then(json => setTodos(json))
+		fetchFoo()
 	}
 	const hideData = () => {
 		setTodos([])
+	}
+	const postData = (value: string) => {
+		const newTodo = {
+			userId: 1,
+			id: todos.length + 1,
+			title: value,
+			completed: false
+		}
+		setTodos([newTodo, ...todos])
+		setInputValue("")
 	}
 
 
 	return (
 		<div className="App">
 			{/*<Button name={"Change data 1"} callBack={changeData1}/>*/}
+			<div>
+				<Input inputValue={inputValue} setInputValue={setInputValue}/>
+				<Button name={"Add data"} callBack={()=>postData(inputValue)}/>
+			</div>
 			<Button name={"Show data"} callBack={showData}/>
 			<Button name={"Hide data"} callBack={hideData}/>
 			<div>{todos.map(el => {
