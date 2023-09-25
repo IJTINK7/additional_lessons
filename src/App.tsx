@@ -1,153 +1,51 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import {Button} from "./components/Button";
-import {Input} from "./components/Input";
-type TodosType = {
-	userId: number
-	id: number
-	title: string
-	completed: boolean
+import {Country} from "./Country";
+
+export type BanknotsType = '' // создадим типы для banknotes -он может быть 'Dollars', 'RUBLS' или 'All'
+export type MoneyType = {
+    banknotes: BanknotsType
+    value: any// не ленимся, убираем заглушку, и пишем правильный тип)
+    number: any// ложку за Димыча, за...
 }
+
+let defaultMoney: any = [  // типизируем
+    {banknotes: 'Dollars', value: 100, number: ' a1234567890'},
+    {banknotes: 'Dollars', value: 50, number: ' z1234567890'},
+    {banknotes: 'RUBLS', value: 100, number: ' w1234567890'},
+    {banknotes: 'Dollars', value: 100, number: ' e1234567890'},
+    {banknotes: 'Dollars', value: 50, number: ' c1234567890'},
+    {banknotes: 'RUBLS', value: 100, number: ' r1234567890'},
+    {banknotes: 'Dollars', value: 50, number: ' x1234567890'},
+    {banknotes: 'RUBLS', value: 50, number: ' v1234567890'},
+]
+
+// типизируем на входе и выходе
+export const moneyFilter = (money: any, filter: any): any => {
+    //если пришел filter со значением 'All', то возвращаем все банкноты
+    //return money.filter... ну да, придется фильтровать
+}
+
 function App() {
-	// const [data, setData] = useState(true);
-	const [todos, setTodos] = useState<TodosType[]>([]);
-	console.log(todos)
-	const [inputValue, setInputValue] = useState("")
-	const fetchFoo = () => {
-		fetch('https://jsonplaceholder.typicode.com/todos')
-			.then(response => response.json())
-			.then(json => setTodos(json))
-	}
-	useEffect(() => {
-		fetchFoo()
-	}, [])
-	// useEffect(() => {
-	// 	fetch('https://jsonplaceholder.typicode.com/todos/7') // It's just an object !!!
-	// 		.then(response => response.json())
-	// 		.then(json => setTodos([json])) // don't forget about array of objects !!!
-	// }, [])
-	// const changeData1 = () => {
-	// 	setData(!data)
-	// }
-	const showData = () => {
-		fetchFoo()
-	}
-	const hideData = () => {
-		setTodos([])
-	}
-	const postData = (value: string) => {
-		const newTodo = {
-			userId: 1,
-			id: todos.length + 1,
-			title: value,
-			completed: false
-		}
-		setTodos([newTodo, ...todos])
-		setInputValue("")
-	}
-	return (
-		<div className="App">
-			{/*<Button name={"Change data 1"} callBack={changeData1}/>*/}
-			<div>
-				<Input inputValue={inputValue} setInputValue={setInputValue}/>
-				<Button name={"Add data"} callBack={()=>postData(inputValue)}/>
-			</div>
-			<Button name={"Show data"} callBack={showData}/>
-			<Button name={"Hide data"} callBack={hideData}/>
-			<div>{todos.map(el => {
-				return (
-					<div key={el.id}>
-						<input type="checkbox" checked={el.completed}/>
-						<span> <b>title:</b> {el.title} </span>
-						<span> <b>id:</b> {el.id} </span>
-					</div>
-				)
-			})}
-			</div>
-		</div>
-	);
+    // убираем заглушки в типизации и вставляем в качестве инициализационного значения defaultMoney
+    const [money, setMoney] = useState<any>([])
+    const [filterValue, setFilterValue] = useState<any>('')   // по умолчанию указываем все банкноты
+
+    // а вот сейчас притормаживаем. И вдумчиво: константа filteredMoney получает результат функции moneyFilter
+    // в функцию передаем деньги и фильтр, по которому ихбудем выдавать(ретёрнуть)
+    const filteredMoney = moneyFilter(грошы, фильтръ)
+    return (
+        <div className="App">
+            <Country
+                data={filteredMoney}   //отрисовать будем деньги после фильтрации
+                setFilterValue={setFilterValue}  //useState передаем? Так можно было?!
+
+            />
+        </div>
+    );
 }
+
+// Итого: в этой компоненте у нас мозги. А вот отрисовка где-то глубже. Погружаемся в Country
+
+
 export default App;
-// useRef
-// import React, {useEffect, useRef, useState} from 'react';
-// import './App.css';
-// import {Button} from "./components/Button";
-// import {Input} from "./components/Input";
-//
-// type TodosType = {
-// 	userId: number
-// 	id: number
-// 	title: string
-// 	completed: boolean
-// }
-//
-// function App() {
-// 	const [todos, setTodos] = useState<TodosType[]>([]);
-// 	console.log(todos)
-//
-// 	// const [inputValue, setInputValue] = useState("")
-// 	const inputValue = useRef<HTMLInputElement>(null)
-//
-// 	const fetchFoo = () => {
-// 		fetch('https://jsonplaceholder.typicode.com/todos')
-// 			.then(response => response.json())
-// 			.then(json => setTodos(json))
-// 	}
-// 	useEffect(() => {
-// 		fetchFoo()
-// 	}, [])
-//
-// 	// useEffect(() => {
-// 	// 	fetch('https://jsonplaceholder.typicode.com/todos/7') // It's just an object !!!
-// 	// 		.then(response => response.json())
-// 	// 		.then(json => setTodos([json])) // don't forget about array of objects !!!
-// 	// }, [])
-//
-//
-// 	// const changeData1 = () => {
-// 	// 	setData(!data)
-// 	// }
-//
-// 	const showData = () => {
-// 		fetchFoo()
-// 	}
-// 	const hideData = () => {
-// 		setTodos([])
-// 	}
-// 	const postData = () => {
-// 		if(inputValue.current) {
-// 			const newTodo = {
-// 				userId: 1,
-// 				id: todos.length + 1,
-// 				title: inputValue.current.value,
-// 				completed: false
-// 			}
-// 			setTodos([newTodo, ...todos])
-// 			inputValue.current.value = ""
-// 		}
-// 	}
-//
-//
-// 	return (
-// 		<div className="App">
-// 			<div>
-// 				<Input inputValue={inputValue} />
-// 				<Button name={"Add data"} callBack={postData}/>
-// 			</div>
-// 			<Button name={"Show data"} callBack={showData}/>
-// 			<Button name={"Hide data"} callBack={hideData}/>
-// 			<div>{todos.map(el => {
-// 				return (
-// 					<div key={el.id}>
-// 						<input type="checkbox" checked={el.completed}/>
-// 						<span> <b>title:</b> {el.title} </span>
-// 						<span> <b>id:</b> {el.id} </span>
-// 					</div>
-// 				)
-// 			})}
-// 			</div>
-// 		</div>
-// 	);
-// }
-//
-// export default App;
