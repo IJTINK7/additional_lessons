@@ -3,25 +3,36 @@ import {CurrentBankomat} from "./CurrentBankomat";
 import {MoneyType} from "./App";
 
 type CityPropsType = {
-    data: any //встречаем денюжки
+    data: MoneyType[] //встречаем денюжки
 }
 
 export const City = (props: CityPropsType) => {
 
     // пока это пропускам
-    // const mappedMoney = props.data.map((el: MoneyType, index) => (
-    //     <CurrentBankomat
-    //         key={index}
-    //         money={el}
-    //     />
-    // ))
+    const mappedMoney = props.data.map((el: MoneyType, index) => (
+        <CurrentBankomat
+            key={index}
+            money={el}
+        />
+    ))
 
 
     return (
         <div>
-            <div>Ну все парни, мапимся -выводим наши денюжки</div>
-            <div>На верстку ПОКА не обращаем внимания , сейчас занимаемся логикой</div>
-            {/*<div>{mappedMoney}</div>*/}
+            {/*<div>*/}
+                {/*<ul>*/}
+                {/*    {props.data.map((el,index)=>{*/}
+                {/*        return(*/}
+                {/*            <li key={index}>*/}
+                {/*                <span>{el.number} </span>*/}
+                {/*                <span>{el.value} </span>*/}
+                {/*                <span>{el.banknotes} </span>*/}
+                {/*            </li>*/}
+                {/*        )*/}
+                {/*    })}*/}
+                {/*</ul>*/}
+            {/*</div>*/}
+            <div>{mappedMoney}</div>
         </div>
     );
 };
