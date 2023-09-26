@@ -2,13 +2,13 @@ import React from 'react';
 import {MoneyType} from "./App";
 import styled from "styled-components";
 
-type CurrentBankomatPropsType = {
+type CurrentATMPropsType = {
     money: MoneyType
 }
 type BanknoteType={
     colors: string
 }
-export const CurrentBankomat = (props:CurrentBankomatPropsType) => {
+export const CurrentATM = (props:CurrentATMPropsType) => {
 
     return (
         <Banknote colors={props.money.banknotes === "Dollars" ? "#0a940a" : "#26c4ff" }>
@@ -49,10 +49,10 @@ const Nominal = styled.div`
 // import {MoneyType} from "./App";
 // import styled from "styled-components";
 //
-// type CurrentBankomatPropsType = {
+// type CurrentATMPropsType = {
 //     money: MoneyType
 // }
-// export const CurrentBankomat = (props:CurrentBankomatPropsType) => {
+// export const CurrentATM = (props:CurrentATMPropsType) => {
 //
 //     return (
 //         props.money.banknotes === "Dollars"

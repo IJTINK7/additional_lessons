@@ -1,6 +1,6 @@
 import React from 'react';
 import {MoneyType} from "./App";
-import {CurrentBankomat} from "./CurrentBankomat";
+import {CurrentATM} from "./CurrentBankomat";
 import styled from "styled-components";
 
 
@@ -10,7 +10,7 @@ type CityPropsType = {
 
 export const City = (props: CityPropsType) => {
 	const mappedMoney = props.data.map((el, index)=>{
-		return <CurrentBankomat key={index} money={el}/>
+		return <CurrentATM key={index} money={el}/>
 	})
 	return(
 		<Wrapper>{mappedMoney}</Wrapper>
