@@ -50,16 +50,16 @@ function App() {
         [todolistId1]: {
             data: [
                 {id: v1(), title: "HTML&CSS1111", isDone: true},
-                {id: v1(), title: "JS1111", isDone: true}
+                {id: v1(), title: "JS1111", isDone: false}
             ],
-            filter: "all"
+            filter: "completed"
         },
         [todolistId2]: {
             data: [
-                {id: v1(), title: "HTML&CSS22222", isDone: true},
+                {id: v1(), title: "HTML&CSS22222", isDone: false},
                 {id: v1(), title: "JS2222", isDone: true}
             ],
-            filter: "all"
+            filter: "active"
         }
     });
 
@@ -87,7 +87,7 @@ function App() {
     }
 
     function changeFilter(todolistId: string, value: FilterValuesType) {
-        setTodolists(todolists.map(el => el.id === todolistId ? {...el, filter: value} : el))
+        setTasks({...tasks, [todolistId]: {...tasks[todolistId], filter: value}})
     }
 
     return (
@@ -95,7 +95,7 @@ function App() {
             {todolists.map((el) => {
                 let tasksForTodolist = tasks[el.id].data;
                 if (tasks[el.id].filter === "active") {
-                    tasksForTodolist = tasks[el.id].data.filter(t => t.isDone);
+                    tasksForTodolist = tasks[el.id].data.filter(t => !t.isDone);
                 }
                 if (tasks[el.id].filter === "completed") {
                     tasksForTodolist = tasks[el.id].data.filter(t => t.isDone);
