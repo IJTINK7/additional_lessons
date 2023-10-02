@@ -23,4 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea
+src 01-1.rar
+src 01-2.rar
+yarn-error.log
 
