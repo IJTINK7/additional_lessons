@@ -161,9 +161,11 @@ function App() {
   ]
 
     let [todo, setTodo] = useState<TodoObjectType[]>([])
-    useEffect(()=>{
-        setTodo(todoFromServer.map(el=>({...el, id: v1()})))
-    },[])
+
+    useEffect(() => {
+        setTodo(todoFromServer.map(el => ({ ...el, id: v1() })));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     function removeTask(id: string, todolistId: string) {
       setTodo(todo.map(el=> el.id === todolistId ? {...el, tasks: el.tasks.filter(el=> el.taskId !== id)}: el))
