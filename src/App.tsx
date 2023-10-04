@@ -212,15 +212,15 @@ function App() {
     return (
         <div className="App">
             {
-                todoFromServer.map(tl => {
-                    let allTodolistTasks = tasks[tl.id];
+                todo.map(tl => {
+                    let allTodolistTasks = tl.tasks;
                     let tasksForTodolist = allTodolistTasks;
 
                     if (tl.filter === "active") {
-                        tasksForTodolist = allTodolistTasks.filter(t => t.isDone === false);
+                        tasksForTodolist = allTodolistTasks.filter(t => !t.isDone);
                     }
                     if (tl.filter === "completed") {
-                        tasksForTodolist = allTodolistTasks.filter(t => t.isDone === true);
+                        tasksForTodolist = allTodolistTasks.filter(t => t.isDone);
                     }
 
                     return <Todolist
