@@ -161,7 +161,9 @@ function App() {
   ]
 
     let [todo, setTodo] = useState<TodoObjectType[]>([])
-
+    useEffect(()=>{
+        setTodo(todoFromServer.map(el=>({...el, id: v1()})))
+    },[])
 
     function removeTask(id: string, todolistId: string) {
         // //достанем нужный массив по todolistId:
