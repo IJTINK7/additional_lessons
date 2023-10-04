@@ -17,7 +17,12 @@ export type TasksType = {
 
 export type FilterValuesType = "all" | "active" | "completed";
 
-
+type TodolistsFromServerType = {
+    title: string
+    filter: FilterValuesType
+    tasks: TasksType[]
+    students: string[]
+}
 
 function App() {
     // let todolistId1 = v1();
@@ -39,7 +44,8 @@ function App() {
     //     ]
     // });
 
-  const todoFromServer=[
+
+  const todoFromServer: TodolistsFromServerType[] = [
       {
           title: "What to learn",
           filter: "all",
@@ -157,6 +163,9 @@ function App() {
       }
   ]
 
+    const todo = todoFromServer.map(el=>({id:v1(),...el}))
+    console.log(todo)
+    let [todo, setTodo] = useState([])
 
 
 
