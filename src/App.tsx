@@ -166,12 +166,7 @@ function App() {
     },[])
 
     function removeTask(id: string, todolistId: string) {
-        // //достанем нужный массив по todolistId:
-        // let todolistTasks = tasks[todolistId];
-        // // перезапишем в этом объекте массив для нужного тудулиста отфилтрованным массивом:
-        // tasks[todolistId] = todolistTasks.filter(t => t.id != id);
-        // // засетаем в стейт копию объекта, чтобы React отреагировал перерисовкой
-        // setTasks({...tasks});
+      setTodo(todo.map(el=> el.id === todolistId ? {...el, tasks: el.tasks.filter(el=> el.taskId !== id)}: el))
     }
     function addTask(title: string, todolistId: string) {
         // let task = {id: v1(), title: title, isDone: false};
