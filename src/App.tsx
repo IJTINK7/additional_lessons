@@ -176,11 +176,7 @@ function App() {
        setTodo(todo.map(el=>el.id === todolistId ? {...el, tasks: el.tasks.map(el=>el.taskId === id ? {...el, isDone} : el)}: el))
     }
     function changeFilter(value: FilterValuesType, todolistId: string) {
-        // let todolist = todolists.find(tl => tl.id === todolistId);
-        // if (todolist) {
-        //     todolist.filter = value;
-        //     setTodolists([...todolists])
-        // }
+        setTodo(todo.map(el=> el.id === todolistId ? {...el, filter: value}: el ))
     }
     function removeTodolist(id: string) {
         // // засунем в стейт список тудулистов, id которых не равны тому, который нужно выкинуть
