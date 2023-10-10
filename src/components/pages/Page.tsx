@@ -1,6 +1,6 @@
 import React from 'react';
 import {PagesType} from "../../data/dataState";
-import {useParams} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 import {Error404} from "./Error404";
 
 type PropsType = {
@@ -9,8 +9,10 @@ type PropsType = {
 export const Page = (props: PropsType) => {
 	const params = useParams()
 	const currentId = Number(params.id)
+	const location = useLocation()
 	return (
 		<div>
+			{location.pathname === "/page/secret" && <div>Secret text!!!</div>}
 			{
 				props.pages[currentId]
 					? <div>
