@@ -5,7 +5,7 @@ import {PageOne} from "./pages/PageOne";
 import {PageTwo} from "./pages/PageTwo";
 import {PageThree} from "./pages/PageThree";
 import {Error404} from "./pages/Error404";
-import styled from "styled-components";
+import { s } from './pages/_styles';
 
 export const Site = () => {
     return (
@@ -13,9 +13,9 @@ export const Site = () => {
             <div className={styles.header}><h1>HEADER</h1></div>
             <div className={styles.body}>
                 <div className={styles.nav}>
-                    <NavWrapper><NavLink className={({isActive})=> isActive ? styles.active : styles.navLink} to={"/page1"}>Page 1</NavLink></NavWrapper>
-                    <NavWrapper><NavLink className={({isActive})=> isActive ? styles.active : styles.navLink} to={"/page2"}>Page 2</NavLink></NavWrapper>
-                    <NavWrapper><NavLink className={({isActive})=> isActive ? styles.active : styles.navLink} to={"/page3"}>Page 3</NavLink></NavWrapper>
+                    <s.NavWrapper><NavLink className={({isActive})=> isActive ? styles.active : styles.navLink} to={"/page1"}>Page 1</NavLink></s.NavWrapper>
+                    <s.NavWrapper><NavLink className={({isActive})=> isActive ? styles.active : styles.navLink} to={"/page2"}>Page 2</NavLink></s.NavWrapper>
+                    <s.NavWrapper><NavLink className={({isActive})=> isActive ? styles.active : styles.navLink} to={"/page3"}>Page 3</NavLink></s.NavWrapper>
                 </div>
                 <div className={styles.content}>
                   <Routes>
@@ -30,20 +30,3 @@ export const Site = () => {
         </div>
     );
 };
-
-const NavWrapper = styled.div `
-margin-left: 10px;
-font-size: 50px;
-        
-& > a {
-    text-decoration: none;
-    color: #1e3786;
-}
-& > a.active {
-    text-decoration: none;
-    color: #03eaff;
-}
-& > a:hover {
-    color: steelblue;
-}
-`
