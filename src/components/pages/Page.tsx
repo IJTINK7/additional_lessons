@@ -1,6 +1,7 @@
 import React from 'react';
 import {PagesType} from "../../data/dataState";
 import {useParams} from "react-router-dom";
+import {Error404} from "./Error404";
 
 type PropsType = {
 	pages: PagesType[]
@@ -10,13 +11,20 @@ export const Page = (props: PropsType) => {
 	const currentId = Number(params.id)
 	return (
 		<div>
-			<div>
-				{props.pages[currentId].heading}
-			</div>
-			<div>
-				{props.pages[currentId].about}
-			</div>
-		</div>
+			{
+				props.pages[currentId]
+					? <div>
 
+						<div>
+							{props.pages[currentId].heading}
+						</div>
+						<div>
+							{props.pages[currentId].about}
+						</div>
+					</div>
+					: <Error404/>
+
+			}
+		</div>
 	);
 };
