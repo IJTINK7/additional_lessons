@@ -6,31 +6,33 @@
     color: white;
 }
 
-.body{
+.body {
     display: flex;
 
 }
 
-.nav{
-   background-color: white;
+.nav {
+    background-color: white;
     height: 500px;
     width: 30%;
-    color:#282c34;
+    color: #282c34;
     font-size: 30px;
 
 }
 
-.content{
-    background-color:#282c34;
+.content {
+    background-color: #282c34;
     height: 500px;
     width: 70%;
     color: white;
     font-size: 30px;
 }
-.navLink{
+
+.navLink {
     text-decoration: none;
     color: #282c34;
 }
+
 .nav a.active {
     color: #7fb8f1;
     text-decoration: none;

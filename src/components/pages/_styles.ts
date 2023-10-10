@@ -1,20 +1,22 @@
 import styled from "styled-components";
 
-const NavWrapper = styled.div `
-margin-left: 10px;
-font-size: 50px;
-        
-& > a {
+const NavWrapper = styled.div`
+  margin-left: 10px;
+  font-size: 50px;
+
+  & > a {
     text-decoration: none;
     color: #1e3786;
-}
-& > a.active {
+  }
+
+  & > a.active {
     text-decoration: none;
     color: #03eaff;
-}
-& > a:hover {
+  }
+
+  & > a:hover {
     color: steelblue;
-}
+  }
 `
 
 export const s = {

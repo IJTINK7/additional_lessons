@@ -1,4 +1,4 @@
-export const dataState: DataStateType ={
+export const dataState: DataStateType = {
 	pages:
 		[
 			{
