@@ -17,6 +17,8 @@ function App() {
                                                to={"/page/1"}>Page 2</NavLink></s.NavWrapper>
                         <s.NavWrapper><NavLink className={({isActive}) => isActive ? styles.active : styles.navLink}
                                                to={"/page/2"}>Page 3</NavLink></s.NavWrapper>
+                        <s.NavWrapper><NavLink className={({isActive}) => isActive ? styles.active : styles.navLink}
+                                               to={"/protected"}>Protected Page</NavLink></s.NavWrapper>
                     </div>
                     <div className={styles.content}>
                         <Outlet/>
