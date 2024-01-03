@@ -13,8 +13,8 @@ const DELAY = 500;
 export const App = () => {
   const dispatch = useDispatch();
 
-  const users = useSelector(selectUsers);
-  const usersCount = useSelector(selectUsersCount);
+  const users = useSelector(selectUsers());
+  const usersCount = useSelector(selectUsersCount());
 
   const [isAddNewUser, setIsAddNewUser] = useState<boolean>(false);
 
@@ -24,13 +24,13 @@ export const App = () => {
     }, DELAY);
 
     return () => clearTimeout(timeoutId);
-  }, [users.length]);
+  }, [userData.users.length]);
 
   useEffect(() => {
-    if (users.length > 0 && isAddNewUser) {
+    if (userData.users.length > 0 && isAddNewUser) {
       dispatch(plusUserCount());
     }
-  }, [dispatch, users.length, isAddNewUser]);
+  }, [dispatch, userData.users.length, isAddNewUser]);
 
   const handleClick = useCallback((): void => {
     dispatch(createUser({id: v1(), name: generateRandomName()}));
