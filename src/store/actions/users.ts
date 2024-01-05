@@ -1,4 +1,4 @@
-import {UserType} from '../../types/UserType';
+import {UserType} from 'types';
 
 export const plusUserCount = () => ({
   type: 'PLUS_USER_COUNT',
