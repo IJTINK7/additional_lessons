@@ -1,5 +1,5 @@
 import React, {FC, memo} from 'react';
-import {UserType} from 'types';
+import {UserType} from '../types/UserType';
 
 export const User: FC<UserType> = memo(({id, name}) => {
   return (

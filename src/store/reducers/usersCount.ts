@@ -1,4 +1,4 @@
-import {plusUserCount} from 'store/actions';
+import {plusUserCount} from '../actions';
 
 const initState = {
   count: '0',

@@ -1,12 +1,13 @@
 import React, {Fragment, useCallback, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {selectUsers, selectUsersCount} from 'store/selectors';
-import {createUser, plusUserCount} from 'store/actions';
+import {selectUsers, selectUsersCount} from './store/selectors';
+import {createUser, plusUserCount} from "./store/actions";
 import {v1} from 'uuid';
-import {CustomButton, UsersCountValue} from 'components';
-import {UsersList} from 'components/UsersList';
-import {generateRandomName} from 'utils';
-import {SetTimeoutType} from 'types';
+import {UsersList} from './components';
+import {generateRandomName} from './utils';
+import {SetTimeoutType} from './types';
+import {UsersCountValue} from "./components";
+import {CustomButton} from "./components";
 
 const DELAY = 500;
 

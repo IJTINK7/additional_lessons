@@ -1,5 +1,5 @@
-import {createUser} from 'store/actions';
-import {UserType} from 'types';
+import {createUser} from '../actions';
+import {UserType} from '../../types/UserType';
 
 const initState = {
   users: [] as UserType[],

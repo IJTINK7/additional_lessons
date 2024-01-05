@@ -1,6 +1,6 @@
-import { AnyIfEmpty, FixTypeLater } from 'react-redux/es/types';
+import { AnyIfEmpty, FixTypeLater} from 'react-redux';
 import {combineReducers, compose, createStore, Store} from 'redux';
-import {usersCountReducer, usersReducer} from 'store/reducers';
+import {usersCountReducer, usersReducer} from './reducers';
 
 
 declare global {
