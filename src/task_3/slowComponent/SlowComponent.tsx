@@ -1,6 +1,6 @@
-import {ChangeEvent, useMemo, useState} from "react";
+import {ChangeEvent, memo, useMemo, useState} from "react";
 
-export const SlowComponent = () => {
+export const SlowComponent = memo(() => {
   console.log('SlowComponent re-render...');
 
   const [value, setValue] = useState('');
@@ -22,4 +22,4 @@ export const SlowComponent = () => {
         <p>I am a very slow component tree.</p>
       </div>
   );
-};
+});
